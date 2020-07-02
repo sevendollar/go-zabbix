@@ -17,7 +17,7 @@ type Session struct {
 // use this method to call the Zabbix API
 // reference this URL https://www.zabbix.com/documentation/2.0/manual/appendix/api/api
 // to get more infomation.
-func (s *Session) do(r *Request) (result []byte, err error) {
+func (s *Session) Do(r *Request) (result []byte, err error) {
 	r.Auth = s.Token
 	payload, err := json.Marshal(r)
 
@@ -55,15 +55,15 @@ func (s *Session) do(r *Request) (result []byte, err error) {
 	return
 }
 
-func (s *Session) login(username, password, uri string) (err error) {
+func (s *Session) Login(username, password, uri string) (err error) {
 	s.URI = uri
 
-	r := newRequest("user.login", map[string]string{
+	r := NewRequest("user.login", map[string]string{
 		"user":     username,
 		"password": password,
 	})
 
-	result, err := s.do(r)
+	result, err := s.Do(r)
 	if err != nil {
 		err = fmt.Errorf("Zabbix Error: %v", err)
 		return
@@ -79,8 +79,8 @@ func (s *Session) login(username, password, uri string) (err error) {
 	return
 }
 
-func (s *Session) logout() (err error) {
-	result, r := s.do(newRequest("user.logout", nil))
+func (s *Session) Logout() (err error) {
+	result, r := s.Do(NewRequest("user.logout", nil))
 	if r != nil {
 		err = r
 		return
@@ -93,6 +93,6 @@ func (s *Session) logout() (err error) {
 	return
 }
 
-func (s *Session) showToken() {
+func (s *Session) ShowToken() {
 	fmt.Println("Token:", s.Token)
 }

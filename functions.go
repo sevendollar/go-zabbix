@@ -2,7 +2,7 @@ package zabbix
 
 import "encoding/json"
 
-func newRequest(method string, params interface{}) *Request {
+func NewRequest(method string, params interface{}) *Request {
 	if params == nil {
 		params = make(map[string]string)
 	}
@@ -16,10 +16,10 @@ func newRequest(method string, params interface{}) *Request {
 	}
 }
 
-func newSession(username, password, uri string) (*Session, error) {
+func NewSession(username, password, uri string) (*Session, error) {
 	s := new(Session)
 
-	err := s.login(username, password, uri)
+	err := s.Login(username, password, uri)
 	if err != nil {
 		return nil, err
 	}
@@ -27,7 +27,7 @@ func newSession(username, password, uri string) (*Session, error) {
 	return s, nil
 }
 
-func jsonPretty(jUgly *[]byte) (err error) {
+func JsonPretty(jUgly *[]byte) (err error) {
 	var x interface{}
 
 	r := json.Unmarshal(*jUgly, &x)
