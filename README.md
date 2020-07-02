@@ -1,7 +1,7 @@
 I written this zabbix API package in Go.
 just so everyone out there uses Zabbix can have fun playing with it.
 
-examples:
+examples
 // start a session
 func main() {
 	user := "Admin"
