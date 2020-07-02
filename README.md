@@ -2,12 +2,12 @@ I written this zabbix API package in Go.
 just so everyone out there uses Zabbix can have fun playing with it.
 
 examples
-// start a session
 func main() {
 	user := "Admin"
 	password := "password"
 	uri := "http://zabbix/api_jsonrpc.php"
 
+  // start a session
 	s, err := newSession(user, password, uri)
 	if err != nil {
 		log.Fatal(err)
