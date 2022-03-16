@@ -1,5 +1,5 @@
 I written this zabbix API package in Go.
-just so everyone out there uses Zabbix can have fun playing with it.
+just so everyone out there using Zabbix can have fun playing with it.
 
 examples
 func main() {
